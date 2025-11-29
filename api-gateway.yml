@@ -1,0 +1,15 @@
+server:
+  port: 8765
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: question-service
+          uri: lb://QUESTION-SERVICE
+          predicates:
+            - Path=/questions/**
+        - id: quiz-service
+          uri: lb://QUIZ-SERVICE
+          predicates:
+            - Path=/quiz/**
